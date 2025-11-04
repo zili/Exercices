@@ -3,9 +3,9 @@ import java.util.*;
 public class EntierSet {
 
     // Fonction pour effectuer la saisie des valeurs, sortie sur valeurs négatives ou 0
-    public static List<Integer> saisie() {
+    public static Set<Integer> saisie() {
         Scanner scan = new Scanner(System.in);
-        List<Integer> nombres =  new ArrayList<>();
+        Set<Integer> nombres =  new HashSet<>();
 
         System.out.println("Entrez des entiers strictement positifs. "
                 + "Pour terminer, entrez un nombre négatif ou 0.");
@@ -28,7 +28,7 @@ public class EntierSet {
 
     // Fonction pour effectuer les calculs (somme, moyenne, max, min)
     // en utilisant le Set de nombres qu'on a saisi.
-    public static void calculer(List<Integer> liste) {
+    public static void calculer(Set<Integer> liste) {
         // Afficher le Set "tel quel"
         System.out.println("Set de nombres saisi : " + liste);
 
@@ -67,7 +67,7 @@ public class EntierSet {
     //https://github.com/zili/Exercices.git
     public static void main(String[] args) {
         // Saisie des valeurs
-        List<Integer> nombres = saisie();
+        Set<Integer> nombres = saisie();
         // Calcul et affichage des statistiques
         calculer(nombres);
     }
