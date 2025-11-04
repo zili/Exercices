@@ -31,30 +31,16 @@ public class EntierSet {
     public static void calculer(Set<Integer> liste) {
         // Afficher le Set "tel quel"
         System.out.println("Set de nombres saisi : " + liste);
-
-        // Eviter division par 0 en cas de Set vide
+        // Éviter division par 0 en cas de Set vide
         if (liste ==null || liste.isEmpty()) {
             System.out.println("Le Set est vide. Aucun calcul possible.");
             return;
         }
 
-        // Calcul de la somme
-        // On la note int, mais on doit faire attention aux débordements (overflow)
-        int somme = 0;
-        for (int nb : liste) {
-            somme += nb;
-        }
-
-        // Calcul de la moyenne
-        double moyenne = (double) somme / liste.size();
-
-        // Calcul des max et min
-        int maxVal = Integer.MIN_VALUE;
-        int minVal = Integer.MAX_VALUE;
-        for (int nb : liste) {
-            if (nb > maxVal) maxVal = nb;
-            if (nb < minVal) minVal = nb;
-        }
+        int somme = liste.stream().mapToInt(x -> x).sum();
+        double moyenne = liste.stream().mapToDouble(x -> x).average().getAsDouble();
+        int maxVal = liste.stream().mapToInt(x -> x).max().getAsInt();
+        int minVal =  liste.stream().mapToInt(x -> x).min().getAsInt();
 
         // Affichage des résultats
         System.out.println("Somme : " + somme);
